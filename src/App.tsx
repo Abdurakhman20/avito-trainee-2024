@@ -7,7 +7,6 @@ function App() {
   console.log(token)
   return (
     <div className="app">
-      <h1>App</h1>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/movie/:id" element={<MoviePage />} />
