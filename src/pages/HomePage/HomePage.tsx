@@ -1,9 +1,9 @@
-import PageWrapper from "../../components/PageWrapper/PageWrapper";
+import Wrapper from "../../components/Wrapper/Wrapper";
 
 const HomePage = () => {
   return (
     <>
-      <PageWrapper>home</PageWrapper>
+      <Wrapper>home</Wrapper>
     </>
   );
 };

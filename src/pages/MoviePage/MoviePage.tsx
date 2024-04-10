@@ -1,4 +1,4 @@
-import PageWrapper from "../../components/PageWrapper/PageWrapper";
+import Wrapper from "../../components/Wrapper/Wrapper";
 import { useParams } from "react-router-dom";
 
 const MoviePage = () => {
@@ -6,7 +6,7 @@ const MoviePage = () => {
   console.log(id);
   return (
     <>
-      <PageWrapper>Movie page</PageWrapper>
+      <Wrapper>Movie page</Wrapper>
     </>
   );
 };
