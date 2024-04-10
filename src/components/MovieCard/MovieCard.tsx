@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { Movie } from "../../types/Movie";
-import loadErrorImage from "../../assets/load-error.jpg";
 
 import s from "./MovieCard.module.css";
 
@@ -19,7 +18,7 @@ const MovieCard = (props: Movie) => {
             className={s.poster_img} 
             onError={({currentTarget}) => {
               currentTarget.onerror = null;
-              currentTarget.src = loadErrorImage;
+              currentTarget.src = backdrop.url;
             }} 
           />
         </Link>

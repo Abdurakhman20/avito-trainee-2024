@@ -13,7 +13,7 @@ const MovieCardList = () => {
   useEffect(() => {
     dispatch(
       fetchMovies({
-        currentPage: 2,
+        currentPage: 1,
       })
     );
   }, [dispatch]);
