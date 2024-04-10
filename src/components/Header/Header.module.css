@@ -1,7 +1,6 @@
 .header {
   padding: 20px 0px;
   background-color: #000;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 .header_wrapper {
   display: flex;
@@ -11,7 +10,13 @@
 .logo {
   font-size: 2rem;
   font-weight: 500;
+  white-space: nowrap;
+  margin-right: 15px;
 }
 .link {
   color: #fff;
+}
+.search_input {
+  max-width: 500px;
+  width: 100%;
 }
