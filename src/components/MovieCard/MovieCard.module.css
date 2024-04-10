@@ -1,0 +1,71 @@
+.wrapper {
+ width: 250px;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ border: 1px solid #949494;
+ border-radius: 10px;
+ padding: 10px;
+ position: relative;
+ cursor: pointer;
+}
+.poster_wrapper {
+  width: 250px;
+  padding: 0px 10px;
+  transition: all 0.2s ease-in-out;
+}
+.poster_wrapper:hover {
+  opacity: 0.7;
+}
+.poster_img {
+  width: 100%;
+  border-radius: 10px;
+}
+.short_description {
+  text-align: justify;
+  font-size: 1.4rem;
+}
+.title {
+  margin: 0;
+  margin: 10px;
+  transition: all 0.2s ease-in-out;
+}
+.title a {
+  color: #000;
+}
+.title:hover {
+  opacity: 0.7;
+}
+.raiting {
+  display: inline-block;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #fff;
+  padding: 3px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 5;
+}
+
+.great {
+  background-color: #008000;
+}
+.good {
+  background-color: #dfdf34;
+}
+.bad {
+  background-color: #e32727;
+}
+.info {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  opacity: 0.7;
+  align-self: flex-start;
+}
+.genres {
+  display: flex;
+  column-gap: 10px;
+  flex-wrap: wrap;
+}
