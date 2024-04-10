@@ -1,8 +1,9 @@
-import { getMovies, getMovieById } from "./movies";
+import { getMovies, getMovieById, searchMovie } from "./movies";
 
 export const api = {
   movies: {
     getMovies,
-    getMovieById
+    getMovieById,
+    searchMovie
   }
 }

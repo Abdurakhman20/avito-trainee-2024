@@ -7,17 +7,17 @@ import { api } from "./api/index";
 
 function App() {
 
-  const getMovies = async () => {
+  const searchMovies = async () => {
     try {
-      const response = await api.movies.getMovieById(666, {});
-      console.log(response?.data);
+      const response = await api.movies.searchMovie("1+1");
+      console.log(response);
     } catch (error) {
-      
+      console.error(error);
     }
   }
 
   useEffect(() => {
-    getMovies();
+    searchMovies();
   }, [])
   return (
     <div className="app"> 
