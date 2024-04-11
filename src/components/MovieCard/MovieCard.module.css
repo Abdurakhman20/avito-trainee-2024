@@ -1,8 +1,9 @@
 .wrapper {
  width: 250px;
+ min-height: 340px;
  display: flex;
  flex-direction: column;
- justify-content: center;
+ justify-content: space-between;
  align-items: center;
  border: 1px solid #949494;
  border-radius: 10px;
