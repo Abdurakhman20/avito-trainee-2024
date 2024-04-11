@@ -1,0 +1,27 @@
+import { Pagination } from "antd";
+import s from "./MyPagination.module.css";
+
+type PaginationProps = {
+  pageSize: number;
+  totalCount: number;
+  onChangePage: (page: number) => void;
+  onChangePageSize: (current: number, size: number) => void;
+}
+
+const MyPagination = ({ pageSize, totalCount, onChangePage, onChangePageSize } : PaginationProps) => {
+  return ( 
+    <>
+      <Pagination 
+        pageSize={pageSize} 
+        total={totalCount} 
+        showTotal={(total, range) => `${range[0]}-${range[1]} of ${total} items`}
+        defaultCurrent={1}
+        onChange={(page) => onChangePage(page)}
+        onShowSizeChange={(current, size) => onChangePageSize(current, size)}
+        className={s.pagination}
+      />
+    </> 
+  );
+}
+ 
+export default MyPagination;

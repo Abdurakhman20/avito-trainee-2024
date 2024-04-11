@@ -1,6 +1,7 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { getMovies } from "../../api/movies";
 import type { Movie } from "../../types/Movie";
+import { MovieResponse } from "../../types/MovieResponse";
 
 enum MovieStatus  {
   LOADING,
@@ -10,11 +11,17 @@ enum MovieStatus  {
 
 interface MovieState {
   movies: Movie[],
+  totalCount: number,
+  currentPage: number,
+  pageSize: number,
   status: MovieStatus,
 };
 
 const initialState: MovieState = {
   movies: [],
+  totalCount: 0,
+  currentPage: 1,
+  pageSize: 10,
   status: MovieStatus.LOADING,
 };
 
@@ -25,7 +32,7 @@ export type fetchMoviesParams = {
 
 export const fetchMovies = createAsyncThunk(
   "movie/fetchMovies",
-  async ({ currentPage, limit = 10 }: fetchMoviesParams): Promise<Movie[]> => {
+  async ({ currentPage = 1, limit = 10 }: fetchMoviesParams): Promise<MovieResponse | undefined> => {
     const response = await getMovies({
       params: {
         page: currentPage,
@@ -33,27 +40,37 @@ export const fetchMovies = createAsyncThunk(
       }
     });
 
-    return response?.data.docs || []
+    return response?.data;
   }
 );
 
 export const movieSlice = createSlice({
   name: "movie",
   initialState,
-  reducers: {},
+  reducers: {
+    setCurrentPage(state, action: PayloadAction<number>) {
+      state.currentPage = action.payload;
+    },
+    setPageSize(state, action: PayloadAction<number>) {
+      state.pageSize = action.payload;
+    }
+  },
   extraReducers(builder) {
     builder.addCase(fetchMovies.pending, (state) => {
       state.status = MovieStatus.LOADING
     });
     builder.addCase(fetchMovies.fulfilled, (state, action) => {
       state.status = MovieStatus.SUCCESS;
-      state.movies = action.payload;
+      state.movies = action.payload?.docs || [];
+      state.totalCount = action.payload?.total || 0;
     });
-    builder.addCase(fetchMovies.rejected, (state, action) => {
+    builder.addCase(fetchMovies.rejected, (state) => {
       state.status = MovieStatus.FAILED;
       state.movies = [];
     })
   },
 }); 
+
+export const { setCurrentPage, setPageSize } = movieSlice.actions;
 
 export default movieSlice.reducer;

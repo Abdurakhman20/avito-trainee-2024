@@ -1,29 +1,21 @@
-import { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { fetchMovies } from "../../store/slices/movieSlice";
-
 import MovieCard from "../../components/MovieCard/MovieCard";
-
+import type { Movie } from "../../types/Movie";
 import s from "./MovieCardList.module.css";
 
-const MovieCardList = () => {
-  const dispatch = useAppDispatch();
-  const movies = useAppSelector((state) => state.movie.movies);
+type MovieCardProps = {
+  movies: Movie[]
+}
 
-  useEffect(() => {
-    dispatch(
-      fetchMovies({
-        currentPage: 1,
-      })
-    );
-  }, [dispatch]);
-
+const MovieCardList = ({ movies }: MovieCardProps) => {
+   
   return (
-    <div className={s.wrapper}>
-      {movies.map((movie) => (
-        <MovieCard {...movie} />
-      ))}
-    </div>
+    <>
+      <div className={s.wrapper}>
+        {movies.map((movie) => (
+          <MovieCard key={movie.id} {...movie} />
+        ))}
+      </div>
+    </>
   );
 };
 
