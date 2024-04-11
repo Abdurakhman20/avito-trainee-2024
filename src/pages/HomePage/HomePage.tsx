@@ -10,6 +10,8 @@ import MovieCardList from "../../components/MovieCardList/MovieCardList";
 import Wrapper from "../../components/Wrapper/Wrapper";
 import MyPagination from "../../components/MyPagination/MyPagination";
 
+import s from "./HomePage.module.css";
+
 const HomePage = () => {
   const dispatch = useAppDispatch();
   const { movies, totalCount, currentPage, pageSize } = useAppSelector(
@@ -36,9 +38,9 @@ const HomePage = () => {
 
   return (
     <>
-      <Wrapper>
+      <Wrapper styles={s.wrapper}>
         <MovieCardList movies={movies} />
-        <div>
+        <div className={s.pagination}>
           <MyPagination
             pageSize={pageSize}
             totalCount={totalCount}

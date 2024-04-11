@@ -1,5 +1,4 @@
 import { Pagination } from "antd";
-import s from "./MyPagination.module.css";
 
 type PaginationProps = {
   pageSize: number;
@@ -18,7 +17,6 @@ const MyPagination = ({ pageSize, totalCount, onChangePage, onChangePageSize } :
         defaultCurrent={1}
         onChange={(page) => onChangePage(page)}
         onShowSizeChange={(current, size) => onChangePageSize(current, size)}
-        className={s.pagination}
       />
     </> 
   );
