@@ -3,7 +3,7 @@ import { getMovies } from "../../api/movies";
 import type { Movie } from "../../types/Movie";
 import { MovieResponse } from "../../types/MovieResponse";
 
-enum MovieStatus  {
+export enum MovieStatus  {
   LOADING,
   SUCCESS,
   FAILED

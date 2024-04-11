@@ -7,3 +7,11 @@ export const ImageSkeleton = () => {
     </>
   );
 }
+
+export const MovieSkeleton = () => {
+  return (
+    <>
+      <Skeleton style={{width: 250, height: 340}} loading />
+    </>
+  );
+}

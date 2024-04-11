@@ -14,7 +14,7 @@ import s from "./HomePage.module.css";
 
 const HomePage = () => {
   const dispatch = useAppDispatch();
-  const { movies, totalCount, currentPage, pageSize } = useAppSelector(
+  const { movies, totalCount, currentPage, pageSize, status } = useAppSelector(
     (state) => state.movie
   );
 
@@ -39,7 +39,7 @@ const HomePage = () => {
   return (
     <>
       <Wrapper styles={s.wrapper}>
-        <MovieCardList movies={movies} />
+        <MovieCardList movies={movies} status={status} />
         <div className={s.pagination}>
           <MyPagination
             pageSize={pageSize}
