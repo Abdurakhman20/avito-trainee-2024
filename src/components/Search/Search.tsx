@@ -18,7 +18,7 @@ const Search = () => {
     debounce((value: string) => {
       dispatch(setSearchQuery(value));
       navigate("/");
-    }, 350),
+    }, 1000),
     []
   );
 
