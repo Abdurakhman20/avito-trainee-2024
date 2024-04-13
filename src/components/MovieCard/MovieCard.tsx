@@ -4,9 +4,20 @@ import { ImageSkeleton } from "../Skeletons";
 import s from "./MovieCard.module.css";
 
 const MovieCard = (props: Movie) => {
-  const { id, backdrop, name, shortDescription, rating, year, genres } = props;
-  const raitingStyles =
-    rating.imdb >= 8 ? s.great : rating.imdb >= 5 ? s.good : s.bad;
+  const { 
+    id, 
+    backdrop, 
+    name, 
+    description, 
+    shortDescription, 
+    rating, 
+    year, 
+    genres, 
+    countries, 
+    ageRating } = props;
+    
+  const raitingStyles = rating.imdb >= 8 ? s.great : rating.imdb >= 5 ? s.good : s.bad;
+  const desc = shortDescription ? shortDescription : ( description.slice(0, 100) + "...");
 
   return (
     <div className={s.wrapper}>
@@ -31,12 +42,22 @@ const MovieCard = (props: Movie) => {
       <h3 className={s.title}>
         <Link to={`movie/${id}`}>{name}</Link>
       </h3>
-      <div className={s.short_description}>{shortDescription}</div>
+      <div className={s.short_description}>{desc}</div>
       <div className={s.info}>
-        <span>{year}</span>
+        <div>
+          <span><strong>{year}</strong></span>
+          &nbsp;
+          <span><strong>{ageRating}+</strong></span>
+        </div>
         <div className={s.genres}>
           {genres.map((genre, i) => (
             <span key={i}>{genre.name}</span>
+          ))}
+        </div>
+
+        <div className={s.countries}>
+          {countries.map((country, i) => (
+            <span key={i}>{country.name}</span>
           ))}
         </div>
       </div>

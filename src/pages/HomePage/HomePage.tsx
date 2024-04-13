@@ -35,7 +35,7 @@ const HomePage = () => {
         searchQuery: searchQuery
       })
     );
-    dispatch(setCurrentPage(1));
+    //dispatch(setCurrentPage(1));
     window.scrollTo(0, 0);
   }, [dispatch, currentPage, pageSize, searchQuery]);
 
