@@ -21,7 +21,7 @@ const MovieCardList = ({ movies, status }: MovieCardProps) => {
 
   return (
     <>
-      {movieCards.length === 0 && <DataNotFound />}
+      {(movieCards.length === 0 && status !== MovieStatus.FAILED) && <DataNotFound />}
       {status === MovieStatus.FAILED && <ErrorInfo />}
       <div className={s.wrapper}>
         {status === MovieStatus.LOADING ? skeletons : movieCards}

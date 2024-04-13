@@ -12,6 +12,6 @@ export const makeRequest = async (config: AxiosRequestConfig) => {
   try {
     return await axios(config);
   } catch (error) {
-    console.error(error);
+    throw error;
   }
 }
