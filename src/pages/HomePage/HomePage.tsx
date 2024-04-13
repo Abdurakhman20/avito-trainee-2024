@@ -5,6 +5,7 @@ import {
   setCurrentPage,
   setPageSize,
 } from "../../store/slices/movieSlice";
+import { useNavigate } from "react-router-dom";
 
 import MovieCardList from "../../components/MovieCardList/MovieCardList";
 import Wrapper from "../../components/Wrapper/Wrapper";
@@ -14,6 +15,7 @@ import s from "./HomePage.module.css";
 
 const HomePage = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const { movies, totalCount, currentPage, pageSize, status, searchQuery } = useAppSelector(
     (state) => state.movie
   );
@@ -35,9 +37,9 @@ const HomePage = () => {
         searchQuery: searchQuery
       })
     );
-    //dispatch(setCurrentPage(1));
+  
     window.scrollTo(0, 0);
-  }, [dispatch, currentPage, pageSize, searchQuery]);
+  }, [dispatch, currentPage, pageSize, searchQuery, navigate]);
 
   return (
     <>
