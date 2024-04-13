@@ -14,9 +14,10 @@ import s from "./HomePage.module.css";
 
 const HomePage = () => {
   const dispatch = useAppDispatch();
-  const { movies, totalCount, currentPage, pageSize, status } = useAppSelector(
+  const { movies, totalCount, currentPage, pageSize, status, searchQuery } = useAppSelector(
     (state) => state.movie
   );
+
 
   const onChangePage = (page: number) => {
     dispatch(setCurrentPage(page));
@@ -31,10 +32,12 @@ const HomePage = () => {
       fetchMovies({
         currentPage: currentPage,
         limit: pageSize,
+        searchQuery: searchQuery
       })
     );
+    dispatch(setCurrentPage(1));
     window.scrollTo(0, 0);
-  }, [dispatch, currentPage, pageSize]);
+  }, [dispatch, currentPage, pageSize, searchQuery]);
 
   return (
     <>

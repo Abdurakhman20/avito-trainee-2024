@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { getMovies } from "../../api/movies";
+import { getMovies, searchMovie } from "../../api/movies";
 import type { Movie } from "../../types/Movie";
 import { MovieResponse } from "../../types/MovieResponse";
 
@@ -11,6 +11,7 @@ export enum MovieStatus  {
 
 interface MovieState {
   movies: Movie[],
+  searchQuery?: string;
   totalCount: number,
   currentPage: number,
   pageSize: number,
@@ -19,6 +20,7 @@ interface MovieState {
 
 const initialState: MovieState = {
   movies: [],
+  searchQuery: "",
   totalCount: 0,
   currentPage: 1,
   pageSize: 10,
@@ -28,11 +30,23 @@ const initialState: MovieState = {
 export type fetchMoviesParams = {
   currentPage: number;
   limit?: number;
+  searchQuery?: string;
 };
 
 export const fetchMovies = createAsyncThunk(
   "movie/fetchMovies",
-  async ({ currentPage = 1, limit = 10 }: fetchMoviesParams): Promise<MovieResponse | undefined> => {
+  async ({ currentPage = 1, limit = 10, searchQuery = "" }: fetchMoviesParams): Promise<MovieResponse | undefined> => {
+    if(searchQuery) {
+      const response = await searchMovie(searchQuery, {
+        params: {
+          page: currentPage,
+          limit: limit,
+          query: searchQuery
+        }
+      });
+
+      return response?.data;
+    }
     const response = await getMovies({
       params: {
         page: currentPage,
@@ -53,6 +67,9 @@ export const movieSlice = createSlice({
     },
     setPageSize(state, action: PayloadAction<number>) {
       state.pageSize = action.payload;
+    },
+    setSearchQuery(state, action: PayloadAction<string>) {
+      state.searchQuery = action.payload;
     }
   },
   extraReducers(builder) {
@@ -71,6 +88,6 @@ export const movieSlice = createSlice({
   },
 }); 
 
-export const { setCurrentPage, setPageSize } = movieSlice.actions;
+export const { setCurrentPage, setPageSize, setSearchQuery } = movieSlice.actions;
 
 export default movieSlice.reducer;
