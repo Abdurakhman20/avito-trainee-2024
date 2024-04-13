@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
+import { Button } from "antd";
 import Wrapper from "../../components/Wrapper/Wrapper";
-import MyButton from "../../components/MyButton/MyButton";
+
 import s from "./NotFound.module.css";
 
 const NotFound = () => {
@@ -9,7 +10,7 @@ const NotFound = () => {
       <span className={s.icon}>😕</span>
       <p className={s.desc}>This page has been deleted or never existed!</p>
       <Link to="/">
-        <MyButton text="Go back" />
+        <Button type="primary">На Главную</Button>
       </Link>
     </Wrapper>
   );

@@ -1,0 +1,31 @@
+.select {
+  display:  flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.title {
+  margin: 0;
+  margin: 10px 0px;
+}
+
+.select_controls {
+  display: flex;
+  column-gap: 10px;
+}
+
+.select_year {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+.select_country {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+.select_age {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}

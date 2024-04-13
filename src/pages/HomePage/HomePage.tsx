@@ -10,16 +10,17 @@ import { useNavigate } from "react-router-dom";
 import MovieCardList from "../../components/MovieCardList/MovieCardList";
 import Wrapper from "../../components/Wrapper/Wrapper";
 import MyPagination from "../../components/MyPagination/MyPagination";
+import Filter from "../../components/Filter/Filter";
 
 import s from "./HomePage.module.css";
 
 const HomePage = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const { movies, totalCount, currentPage, pageSize, status, searchQuery } = useAppSelector(
+  const { movies, totalCount, currentPage, pageSize, status, searchQuery, filterParams } = useAppSelector(
     (state) => state.movie
   );
-
+  console.log(filterParams)
 
   const onChangePage = (page: number) => {
     dispatch(setCurrentPage(page));
@@ -44,6 +45,7 @@ const HomePage = () => {
   return (
     <>
       <Wrapper styles={s.wrapper}>
+        <Filter />
         <MovieCardList movies={movies} status={status} />
         <div className={s.pagination}>
           <MyPagination

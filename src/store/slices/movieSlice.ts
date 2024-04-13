@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { getMovies, searchMovie } from "../../api/movies";
 import type { Movie } from "../../types/Movie";
 import { MovieResponse } from "../../types/MovieResponse";
+import { FilterParams } from "../../types/FilterParams";
 
 export enum MovieStatus  {
   LOADING,
@@ -9,8 +10,10 @@ export enum MovieStatus  {
   FAILED
 };
 
+
 interface MovieState {
   movies: Movie[],
+  filterParams: FilterParams;
   searchQuery?: string;
   totalCount: number,
   currentPage: number,
@@ -20,6 +23,11 @@ interface MovieState {
 
 const initialState: MovieState = {
   movies: [],
+  filterParams: {
+    year: "",
+    country: "",
+    age: ""
+  },
   searchQuery: "",
   totalCount: 0,
   currentPage: 1,
@@ -29,13 +37,14 @@ const initialState: MovieState = {
 
 export type fetchMoviesParams = {
   currentPage: number;
+  filterParams?: FilterParams; 
   limit?: number;
   searchQuery?: string;
 };
 
 export const fetchMovies = createAsyncThunk(
   "movie/fetchMovies",
-  async ({ currentPage = 1, limit = 10, searchQuery = "" }: fetchMoviesParams): Promise<MovieResponse | undefined> => {
+  async ({ currentPage = 1, limit = 10, searchQuery = "", filterParams }: fetchMoviesParams): Promise<MovieResponse | undefined> => {
     if(searchQuery) {
       const response = await searchMovie(searchQuery, {
         params: {
@@ -50,7 +59,10 @@ export const fetchMovies = createAsyncThunk(
     const response = await getMovies({
       params: {
         page: currentPage,
-        limit: limit
+        limit: limit,
+        year: filterParams?.year,
+        "countries.name": filterParams?.country,
+        ageRating: filterParams?.age
       }
     });
 
@@ -70,6 +82,9 @@ export const movieSlice = createSlice({
     },
     setSearchQuery(state, action: PayloadAction<string>) {
       state.searchQuery = action.payload;
+    },
+    setFilterParams(state, action: PayloadAction<FilterParams>) {
+      state.filterParams = action.payload;
     }
   },
   extraReducers(builder) {
@@ -88,6 +103,6 @@ export const movieSlice = createSlice({
   },
 }); 
 
-export const { setCurrentPage, setPageSize, setSearchQuery } = movieSlice.actions;
+export const { setCurrentPage, setPageSize, setSearchQuery, setFilterParams } = movieSlice.actions;
 
 export default movieSlice.reducer;
