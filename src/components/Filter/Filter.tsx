@@ -51,7 +51,7 @@ const Filter = () => {
 
   return (
     <div className={s.select}>
-      <h3 className={s.title}>Отфильтровать по:</h3>
+      <h3 className={s.title}>Фильтр по:</h3>
       <div className={s.select_controls}>
         <div className={s.select_year}>
           <label htmlFor="year">Году</label>

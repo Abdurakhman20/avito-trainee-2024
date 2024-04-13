@@ -63,7 +63,6 @@ export const AGE_OPTIONS = [
   {value: "0"},
   {value: "6"},
   {value: "12"},
-  {value: "14"},
   {value: "16"},
   {value: "18"},
 ];

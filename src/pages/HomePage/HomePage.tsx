@@ -20,7 +20,6 @@ const HomePage = () => {
   const { movies, totalCount, currentPage, pageSize, status, searchQuery, filterParams } = useAppSelector(
     (state) => state.movie
   );
-  console.log(filterParams)
 
   const onChangePage = (page: number) => {
     dispatch(setCurrentPage(page));
@@ -35,12 +34,13 @@ const HomePage = () => {
       fetchMovies({
         currentPage: currentPage,
         limit: pageSize,
-        searchQuery: searchQuery
+        searchQuery: searchQuery,
+        filterParams: filterParams
       })
     );
   
     window.scrollTo(0, 0);
-  }, [dispatch, currentPage, pageSize, searchQuery, navigate]);
+  }, [dispatch, currentPage, pageSize, searchQuery, filterParams, navigate]);
 
   return (
     <>

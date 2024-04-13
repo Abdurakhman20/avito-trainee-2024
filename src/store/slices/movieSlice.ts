@@ -56,13 +56,19 @@ export const fetchMovies = createAsyncThunk(
 
       return response?.data;
     }
+
+    const params: Record<string, string> = {};
+    
+    if (filterParams) {
+      if (filterParams.year !== "") params["year"] = filterParams.year;
+      if (filterParams.country !== "") params["countries.name"] = filterParams.country;
+      if (filterParams.age !== "") params["ageRating"] = filterParams.age;
+    }
     const response = await getMovies({
       params: {
         page: currentPage,
         limit: limit,
-        year: filterParams?.year,
-        "countries.name": filterParams?.country,
-        ageRating: filterParams?.age
+        ...params
       }
     });
 

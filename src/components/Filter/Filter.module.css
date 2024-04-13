@@ -11,7 +11,8 @@
 
 .select_controls {
   display: flex;
-  column-gap: 10px;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .select_year {
