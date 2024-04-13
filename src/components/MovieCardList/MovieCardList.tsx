@@ -1,6 +1,8 @@
 import MovieCard from "../../components/MovieCard/MovieCard";
 import { MovieStatus } from "../../store/slices/movieSlice";
 import type { Movie } from "../../types/Movie";
+import DataNotFound from "../DataNotFound/DataNotFound";
+import ErrorInfo from "../ErrorInfo/ErrorInfo";
 import { MovieSkeleton } from "../Skeletons";
 import s from "./MovieCardList.module.css";
 
@@ -10,7 +12,6 @@ type MovieCardProps = {
 };
 
 const MovieCardList = ({ movies, status }: MovieCardProps) => {
-
   const skeletons = [...new Array(10)].map((_, index) => (
     <MovieSkeleton key={index} />
   ));
@@ -20,10 +21,10 @@ const MovieCardList = ({ movies, status }: MovieCardProps) => {
 
   return (
     <>
+      {movieCards.length === 0 && <DataNotFound />}
+      {status === MovieStatus.FAILED && <ErrorInfo />}
       <div className={s.wrapper}>
-        {
-          status === MovieStatus.LOADING ? skeletons : movieCards
-        }
+        {status === MovieStatus.LOADING ? skeletons : movieCards}
       </div>
     </>
   );
