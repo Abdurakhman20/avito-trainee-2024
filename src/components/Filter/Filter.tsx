@@ -37,10 +37,6 @@ const Filter = () => {
     }));
   };
 
-  useEffect(() => {
-    dispatch(setFilterParams(filter));
-  }, [filter, dispatch]);
-
   const handleClickButton = () => {
     setFilter({
       year: "",
@@ -48,6 +44,10 @@ const Filter = () => {
       age: "",
     });
   };
+
+  useEffect(() => {
+    dispatch(setFilterParams(filter));
+  }, [filter, dispatch]);
 
   return (
     <div className={s.select}>

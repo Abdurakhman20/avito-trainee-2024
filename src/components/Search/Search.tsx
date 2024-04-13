@@ -3,15 +3,14 @@ import debounce from "lodash.debounce";
 import { useNavigate } from "react-router-dom";
 
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { setSearchQuery } from "../../store/slices/movieSlice";
-import { MovieStatus } from "../../store/slices/movieSlice";
+import { setSearchQuery, MovieStatus } from "../../store/slices/movieSlice";
 
 import { Input } from 'antd';
 
 const Search = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const status = useAppSelector((state) => state.movie.status);
+  const { status } = useAppSelector((state) => state.movie);
 
   const [searchValue, setSearchValue] = useState("");
 
