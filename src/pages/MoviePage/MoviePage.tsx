@@ -9,6 +9,7 @@ import { Spin } from "antd";
 import PersonCardList from "../../components/PersonCardList/PersonCardList";
 import Seasons from "../../components/Seasons/Seasons";
 import PostersCarousel from "../../components/PostersCarousel/PostersCarousel";
+import SimilarMovie from "../../components/SimilarMovie/SimilarMovie";
 
 
 const MoviePage = () => {
@@ -41,7 +42,6 @@ const MoviePage = () => {
       </Wrapper>
     );
   }
-
   console.log(movie);
   const {
     name,
@@ -52,6 +52,7 @@ const MoviePage = () => {
     persons,
     seasonsInfo,
     poster,
+    similarMovies
   } = movie;
   const raitingStyles =
     rating.imdb >= 8 ? s.great : rating.imdb >= 5 ? s.good : s.bad;
@@ -77,6 +78,9 @@ const MoviePage = () => {
         <PersonCardList persons={persons} />
         {seasonsInfo.length ? <Seasons seasons={seasonsInfo} /> : <h2>Нет информации о сезонах...</h2>  }
         <PostersCarousel data={[poster, poster, poster]} />
+        <SimilarMovie data={similarMovies as Movie[]} />
+        <div>
+        </div>
       </Wrapper>
     </>
   );

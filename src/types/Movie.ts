@@ -14,20 +14,29 @@ export type Poster = {
   previewUrl: string;
   url: string;
 }
+export type SimilarMovie = {
+  id: number;
+  name: string;
+  rating: {
+    filmCritics: number;
+    imdb: number;
+    kp: number;
+    russianFilmCritics: number;
+  }
+  poster: Poster;
+  year: number;
+}
 
 export type Movie = {
   id: number;
   name: string;
   ageRating: number;
   description: string;
-  shortDescription: string;
-  logo: {
-    url: string;
-  };
   backdrop: {
     previewUrl: string;
     url: string;
   };
+  similarMovies: SimilarMovie[];
   poster: Poster;
   seasonsInfo: SeasonsInfo[];
   genres: Genre[];
@@ -39,6 +48,5 @@ export type Movie = {
     kp: number;
     russianFilmCritics: number;
   }
-  movieLength: number;
   year: number;
 }
