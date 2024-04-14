@@ -22,7 +22,7 @@ const SimilarMovie = ({data}: SimilarMovieProps) => {
       <h2 className={s.title}>Похожие фильмы</h2>
       <Carousel slidesToShow={3} ref={ref} draggable>
         {data.map((item) => (
-          <MovieCard {...item} />
+          <MovieCard key={item.id} {...item} />
         ))}
       </Carousel>
       <div className={s.controls}>

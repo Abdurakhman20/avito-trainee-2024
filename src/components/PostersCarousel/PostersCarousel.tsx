@@ -17,8 +17,8 @@ const PostersCarousel = ({ data } : CarouselProps) => {
     <h2 className={s.title}>Постеры</h2>
     <Carousel ref={ref} draggable >
       {
-        data.map((item) => (
-          <div className={s.img_wrapper}>
+        data.map((item, i) => (
+          <div key={i} className={s.img_wrapper}>
             <img className={s.img} src={item.url} alt="img" />
           </div>
         ))

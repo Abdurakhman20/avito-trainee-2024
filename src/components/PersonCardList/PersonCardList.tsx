@@ -30,8 +30,8 @@ const PersonCardList = (props: Props) => {
     <div className={s.wrapper}>
       <h2 className={s.persons_title}>Список Актеров</h2>
       <ul className={s.persons_list}>
-        {persons.slice(startIndex, endIndex).map((person) => (
-          <PersonCard key={person.id} {...person} />
+        {persons.slice(startIndex, endIndex).map((person, i) => (
+          <PersonCard key={i} {...person} />
         ))}
       </ul>
       <MyPagination

@@ -41,21 +41,9 @@ const MoviePage = () => {
       </Wrapper>
     );
   }
-  console.log(movie);
-  const {
-    name,
-    year,
-    backdrop,
-    description,
-    rating,
-    persons,
-    seasonsInfo,
-    poster,
-    similarMovies,
-    genres,
-    countries,
-    ageRating,
-  } = movie;
+  
+  const { name,year,backdrop,description,rating,persons,seasonsInfo,
+          poster,similarMovies,genres,countries,ageRating } = movie;
 
   const raitingStyles =rating.imdb >= 8 ? s.great : rating.imdb >= 5 ? s.good : s.bad;
 
