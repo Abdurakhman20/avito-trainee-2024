@@ -1,14 +1,14 @@
 import { ChangeEvent, useState, useCallback } from "react";
+import { useLocation } from "react-router-dom";
 import debounce from "lodash.debounce";
-import { useNavigate } from "react-router-dom";
 
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { setSearchQuery, MovieStatus } from "../../store/slices/movieSlice";
-
 import { Input } from 'antd';
 
 const Search = () => {
-  const navigate = useNavigate();
+  const location = useLocation();
+
   const dispatch = useAppDispatch();
   const { status } = useAppSelector((state) => state.movie);
 
@@ -17,7 +17,6 @@ const Search = () => {
   const updateSearchQuery = useCallback(
     debounce((value: string) => {
       dispatch(setSearchQuery(value));
-      navigate("/");
     }, 1000),
     []
   );
@@ -36,6 +35,7 @@ const Search = () => {
       size='large'
       enterButton 
       loading = {status === MovieStatus.LOADING}
+      hidden={ location.pathname !== "/" }
     />
   </> 
   );

@@ -1,6 +1,6 @@
 .header {
-  padding: 20px 0px;
   background-color: #000;
+  min-height: 80px;
   position: fixed;
   top: 0;
   left: 0;
@@ -9,8 +9,9 @@
 }
 .header_wrapper {
   display: flex;
+  min-height: 80px;
   justify-content: space-between;
-  align-items: center;
+  align-items: center;  
 }
 
 .logo {

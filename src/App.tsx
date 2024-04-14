@@ -4,6 +4,7 @@ import MoviePage from "./pages/MoviePage/MoviePage";
 import Header from "./components/Header/Header";
 import NotFound from "./pages/NotFound/NotFound";
 
+
 function App() {
   return (
     <div className="app">
