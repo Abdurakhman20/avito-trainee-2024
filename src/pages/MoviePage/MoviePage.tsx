@@ -5,7 +5,8 @@ import type { Movie } from "../../types/Movie";
 import { getMovieById } from "../../api/movies";
 
 import s from "./MoviePage.module.css";
-import { Spin } from "antd";
+import { Button, Spin } from "antd";
+import { CaretLeftOutlined } from "@ant-design/icons/lib/icons";
 import PersonCardList from "../../components/PersonCardList/PersonCardList";
 import Seasons from "../../components/Seasons/Seasons";
 import PostersCarousel from "../../components/PostersCarousel/PostersCarousel";
@@ -55,8 +56,8 @@ const MoviePage = () => {
     countries,
     ageRating,
   } = movie;
-  const raitingStyles =
-    rating.imdb >= 8 ? s.great : rating.imdb >= 5 ? s.good : s.bad;
+
+  const raitingStyles =rating.imdb >= 8 ? s.great : rating.imdb >= 5 ? s.good : s.bad;
 
   return (
     <>
@@ -96,7 +97,14 @@ const MoviePage = () => {
         )}
         <PostersCarousel data={[poster, poster, poster]} />
         <SimilarMovie data={similarMovies as Movie[]} />
-        <div></div>
+        <Button 
+          className={s.button_back} 
+          type="primary" 
+          shape="circle" 
+          icon={<CaretLeftOutlined />}
+          size="large" 
+          onClick={() => window.history.back()} 
+        />
       </Wrapper>
     </>
   );

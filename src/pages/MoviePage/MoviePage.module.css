@@ -1,5 +1,6 @@
 .wrapper {
   padding-top: 90px;
+  position: relative;
 }
 .loading {
   position: relative;
@@ -69,4 +70,10 @@
   display: flex;
   column-gap: 10px;
   flex-wrap: wrap;
+}
+
+.button_back {
+  position: fixed;
+  bottom: 20px;
+  right: 40px;
 }
