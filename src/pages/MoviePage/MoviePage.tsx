@@ -8,12 +8,14 @@ import s from "./MoviePage.module.css";
 import { Spin } from "antd";
 import PersonCardList from "../../components/PersonCardList/PersonCardList";
 import Seasons from "../../components/Seasons/Seasons";
+import PostersCarousel from "../../components/PostersCarousel/PostersCarousel";
+
 
 const MoviePage = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const [movie, setMovie] = useState<Movie>();
-  
+ 
 
   useEffect(() => {
     const fetchMovie = async (movieId: string) => {
@@ -41,10 +43,19 @@ const MoviePage = () => {
   }
 
   console.log(movie);
-  const { name, year, backdrop, description, rating, persons, seasonsInfo } = movie;
-  const raitingStyles = rating.imdb >= 8 ? s.great : rating.imdb >= 5 ? s.good : s.bad;
+  const {
+    name,
+    year,
+    backdrop,
+    description,
+    rating,
+    persons,
+    seasonsInfo,
+    poster,
+  } = movie;
+  const raitingStyles =
+    rating.imdb >= 8 ? s.great : rating.imdb >= 5 ? s.good : s.bad;
 
-  
   return (
     <>
       <Wrapper styles={s.wrapper}>
@@ -57,15 +68,15 @@ const MoviePage = () => {
           </div>
           <div className={s.info}>
             <h1 className={s.title}>
-              {" "}
-              {name} ( {year} ){" "}
+              {name} ( {year} )
             </h1>
             <h2 className={s.subtitle}>О фильме:</h2>
             <p className={s.desc}>{description}</p>
           </div>
         </div>
         <PersonCardList persons={persons} />
-        <Seasons seasons={seasonsInfo} />
+        {seasonsInfo.length ? <Seasons seasons={seasonsInfo} /> : <h2>Нет информации о сезонах...</h2>  }
+        <PostersCarousel data={[poster, poster, poster]} />
       </Wrapper>
     </>
   );

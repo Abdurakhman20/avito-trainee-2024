@@ -10,6 +10,10 @@ export type SeasonsInfo = {
   number: number;
   episodesCount: number;
 }
+export type Poster = {
+  previewUrl: string;
+  url: string;
+}
 
 export type Movie = {
   id: number;
@@ -24,6 +28,7 @@ export type Movie = {
     previewUrl: string;
     url: string;
   };
+  poster: Poster;
   seasonsInfo: SeasonsInfo[];
   genres: Genre[];
   countries: Country[];

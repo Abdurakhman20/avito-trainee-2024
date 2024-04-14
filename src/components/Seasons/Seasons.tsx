@@ -5,9 +5,9 @@ import MyPagination from "../MyPagination/MyPagination";
 
 type SeasonsInfoProps = {
   seasons: SeasonsInfo[];
-}
+};
 const Seasons = (props: SeasonsInfoProps) => {
-  const {seasons} = props;
+  const { seasons } = props;
 
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
@@ -26,9 +26,7 @@ const Seasons = (props: SeasonsInfoProps) => {
 
   return (
     <div>
-      {
-        seasons.length ? <h2>Список сезонов</h2>: <h2>Список сезонов пуст ☜(ﾟヮﾟ☜)</h2>
-      }
+      <h2>Список сезонов</h2>
       <ul className={s.seasonsInfo}>
         {seasons.slice(startIndex, endIndex).map((season) => (
           <li>
@@ -38,12 +36,12 @@ const Seasons = (props: SeasonsInfoProps) => {
         ))}
       </ul>
       <MyPagination
-          pageSize={pageSize}
-          totalCount={seasons.length}
-          currentPage={currentPage}
-          onChangePage={handlePageChange}
-          onChangePageSize={handlePageSizeChange}
-        />
+        pageSize={pageSize}
+        totalCount={seasons.length}
+        currentPage={currentPage}
+        onChangePage={handlePageChange}
+        onChangePageSize={handlePageSizeChange}
+      />
     </div>
   );
 };
