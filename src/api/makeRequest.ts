@@ -1,5 +1,5 @@
 import axios, { AxiosRequestConfig } from "axios";
-const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT;
+const API_ENDPOINT = "https://api.kinopoisk.dev/v1.4";
 const token = process.env.REACT_APP_TOKEN;
 
 export const makeRequest = async (config: AxiosRequestConfig) => {

@@ -19,10 +19,10 @@ Frontend приложениt для быстрого поиска информа
 - Поиск фильма по ID https://api.kinopoisk.dev/v1.4/movie/${id}
 
 ## Инструкция по  запуску
-- Скачать проект из ветка main: `git clone <ссылка на проект>`
+- cкачать проект из ветка main: `git clone <ссылка на проект>`
 - в командной строке ввести `npm install`
 - в командной строке ввести:
-  - Для powershell : `$env:REACT_APP_TOKEN = token ; npm run start`
+  - для powershell : `$env:REACT_APP_TOKEN = token ; npm run start`
   - для CMD: `set REACT_APP_TOKEN = token && npm run start`
   - для Bash: `REACT_APP_TOKEN=token npm run start`
   - или создать файл .env в корне проекта и записать туда -> `REACT_APP_TOKEN=token` и потом в консоли ввести команду `npm run start`
