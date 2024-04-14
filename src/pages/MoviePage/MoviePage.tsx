@@ -7,6 +7,7 @@ import { getMovieById } from "../../api/movies";
 import s from "./MoviePage.module.css";
 import { Spin } from "antd";
 import PersonCardList from "../../components/PersonCardList/PersonCardList";
+import Seasons from "../../components/Seasons/Seasons";
 
 const MoviePage = () => {
   const navigate = useNavigate();
@@ -40,7 +41,7 @@ const MoviePage = () => {
   }
 
   console.log(movie);
-  const { name, year, backdrop, description, rating, persons } = movie;
+  const { name, year, backdrop, description, rating, persons, seasonsInfo } = movie;
   const raitingStyles = rating.imdb >= 8 ? s.great : rating.imdb >= 5 ? s.good : s.bad;
 
   
@@ -64,6 +65,7 @@ const MoviePage = () => {
           </div>
         </div>
         <PersonCardList persons={persons} />
+        <Seasons seasons={seasonsInfo} />
       </Wrapper>
     </>
   );

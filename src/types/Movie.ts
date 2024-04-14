@@ -6,6 +6,10 @@ type Country = {
 type Genre = {
   name: string;
 }
+export type SeasonsInfo = {
+  number: number;
+  episodesCount: number;
+}
 
 export type Movie = {
   id: number;
@@ -20,6 +24,7 @@ export type Movie = {
     previewUrl: string;
     url: string;
   };
+  seasonsInfo: SeasonsInfo[];
   genres: Genre[];
   countries: Country[];
   persons: Person[];
