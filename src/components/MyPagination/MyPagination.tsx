@@ -19,6 +19,7 @@ const MyPagination = ({ pageSize, totalCount, currentPage, onChangePage, onChang
         current={currentPage}
         onChange={(page) => onChangePage(page)}
         onShowSizeChange={(current, size) => onChangePageSize(current, size)}
+        hideOnSinglePage
       />
     </> 
   );

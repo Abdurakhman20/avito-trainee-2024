@@ -1,0 +1,22 @@
+.person {
+  display: flex;
+  gap: 30px;
+  justify-content: space-between;
+  
+  max-width: 300px;
+  padding: 10px;
+  width: 100%;
+  border: 1px solid #000;
+  border-radius: 10px;
+}
+.person_img_wrapper {
+  width: 60px;
+}
+.person_img {
+  width: 100%;
+}
+.person_info {
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-align: center;
+}

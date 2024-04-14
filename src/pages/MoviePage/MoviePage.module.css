@@ -1,0 +1,62 @@
+.wrapper {
+  padding-top: 90px;
+}
+.loading {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 90px);
+}
+.spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.title {
+  font-size: 4rem;
+}
+.flex_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 50px;
+  padding-top: 30px;
+}
+.image_wrapper {
+  flex: 1;
+  position: relative;
+}
+.info {
+  flex: 1;
+}
+.image {
+  border-radius: 10px;
+  width: 100%;
+}
+.desc {
+  line-height: 1.5;
+  font-size: 1.8rem;
+}
+.raiting {
+  display: inline-block;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 5;
+}
+
+.great {
+  background-color: #008000;
+}
+.good {
+  background-color: #dfdf34;
+}
+.bad {
+  background-color: #e32727;
+}
+
