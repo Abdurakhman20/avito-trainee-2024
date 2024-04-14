@@ -3,7 +3,7 @@ import { Carousel, Button } from "antd";
 import s from "./PostersCarousel.module.css";
 import { CaretLeftOutlined, CaretRightOutlined } from "@ant-design/icons/lib/icons";
 import { CarouselRef } from "antd/es/carousel";
-import { Poster } from "../../types/Movie";
+import { Poster } from "../../types/Poster";
 
 type CarouselProps = {
   data: Poster[]

@@ -11,12 +11,10 @@ import Seasons from "../../components/Seasons/Seasons";
 import PostersCarousel from "../../components/PostersCarousel/PostersCarousel";
 import SimilarMovie from "../../components/SimilarMovie/SimilarMovie";
 
-
 const MoviePage = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const [movie, setMovie] = useState<Movie>();
- 
 
   useEffect(() => {
     const fetchMovie = async (movieId: string) => {
@@ -52,7 +50,10 @@ const MoviePage = () => {
     persons,
     seasonsInfo,
     poster,
-    similarMovies
+    similarMovies,
+    genres,
+    countries,
+    ageRating,
   } = movie;
   const raitingStyles =
     rating.imdb >= 8 ? s.great : rating.imdb >= 5 ? s.good : s.bad;
@@ -69,18 +70,33 @@ const MoviePage = () => {
           </div>
           <div className={s.info}>
             <h1 className={s.title}>
-              {name} ( {year} )
+              {name} <br /> {ageRating}+ ( {year} )
             </h1>
             <h2 className={s.subtitle}>О фильме:</h2>
+
+            <div className={s.genres}>
+              {genres.map((genre, i) => (
+                <span key={i}>{genre.name}</span>
+              ))}
+            </div>
+            <div className={s.countries}>
+              {countries.map((country, i) => (
+                <span key={i}>{country.name}</span>
+              ))}
+            </div>
+            <hr />
             <p className={s.desc}>{description}</p>
           </div>
         </div>
         <PersonCardList persons={persons} />
-        {seasonsInfo.length ? <Seasons seasons={seasonsInfo} /> : <h2>Нет информации о сезонах...</h2>  }
+        {seasonsInfo?.length ? (
+          <Seasons seasons={seasonsInfo} />
+        ) : (
+          <h2>Нет информации о сезонах...</h2>
+        )}
         <PostersCarousel data={[poster, poster, poster]} />
         <SimilarMovie data={similarMovies as Movie[]} />
-        <div>
-        </div>
+        <div></div>
       </Wrapper>
     </>
   );

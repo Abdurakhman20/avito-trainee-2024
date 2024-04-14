@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { SeasonsInfo } from "../../types/Movie";
+import { SeasonsInfo } from "../../types/SeasonsInfo";
 import s from "./Seasons.module.css";
 import MyPagination from "../MyPagination/MyPagination";
 

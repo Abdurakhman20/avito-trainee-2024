@@ -59,3 +59,14 @@
 .bad {
   background-color: #e32727;
 }
+.genres {
+  display: flex;
+  column-gap: 10px;
+  flex-wrap: wrap;
+  padding: 10px 0px;
+}
+.countries {
+  display: flex;
+  column-gap: 10px;
+  flex-wrap: wrap;
+}

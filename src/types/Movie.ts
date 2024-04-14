@@ -1,31 +1,9 @@
+import { Country } from "./Country";
+import { Genre } from "./Genre";
 import type { Person } from "./Person";
-
-type Country = {
-  name: string;
-}
-type Genre = {
-  name: string;
-}
-export type SeasonsInfo = {
-  number: number;
-  episodesCount: number;
-}
-export type Poster = {
-  previewUrl: string;
-  url: string;
-}
-export type SimilarMovie = {
-  id: number;
-  name: string;
-  rating: {
-    filmCritics: number;
-    imdb: number;
-    kp: number;
-    russianFilmCritics: number;
-  }
-  poster: Poster;
-  year: number;
-}
+import { Poster } from "./Poster";
+import { SeasonsInfo } from "./SeasonsInfo";
+import { SimilarMovie } from "./SimilarMovie";
 
 export type Movie = {
   id: number;
@@ -50,3 +28,4 @@ export type Movie = {
   }
   year: number;
 }
+

@@ -24,7 +24,7 @@ const PersonCardList = (props: Props) => {
   };
 
   const startIndex = (currentPage - 1) * pageSize;
-  const endIndex = Math.min(startIndex + pageSize, persons.length);
+  const endIndex = Math.min(startIndex + pageSize, persons?.length);
 
   return (
     <div className={s.wrapper}>

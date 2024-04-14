@@ -20,7 +20,7 @@ const SimilarMovie = ({data}: SimilarMovieProps) => {
   return (
     <div className={s.wrapper}>
       <h2 className={s.title}>Похожие фильмы</h2>
-      <Carousel ref={ref} draggable>
+      <Carousel slidesToShow={3} ref={ref} draggable>
         {data.map((item) => (
           <MovieCard {...item} />
         ))}
