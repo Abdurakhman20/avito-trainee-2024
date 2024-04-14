@@ -17,7 +17,7 @@ const MovieCard = (props: Movie) => {
     ageRating } = props;
     
   const raitingStyles = rating.imdb >= 8 ? s.great : rating.imdb >= 5 ? s.good : s.bad;
-  const desc = shortDescription ? shortDescription : ( description.slice(0, 100) + "...");
+  const desc = shortDescription ? shortDescription : ( description?.slice(0, 100) + "...");
 
   return (
     <div className={s.wrapper}>
